@@ -428,12 +428,19 @@
         position: absolute; inset: 0;
         opacity: 1; transition: opacity 0.5s;
     }
-    .portfolio-item:nth-child(1) .portfolio-colors { background: linear-gradient(135deg, #C48098 0%, #8B3A52 100%); }
-    .portfolio-item:nth-child(2) .portfolio-colors { background: linear-gradient(135deg, #D4AF83 0%, #B8935A 100%); }
-    .portfolio-item:nth-child(3) .portfolio-colors { background: linear-gradient(135deg, #F2C4CE 0%, #C48098 100%); }
-    .portfolio-item:nth-child(4) .portfolio-colors { background: linear-gradient(135deg, #8B3A52 0%, #5C2535 100%); }
-    .portfolio-item:nth-child(5) .portfolio-colors { background: linear-gradient(135deg, #C48098 0%, #D4AF83 100%); }
-    .portfolio-item:nth-child(6) .portfolio-colors { background: linear-gradient(135deg, #F2C4CE 0%, #8B3A52 100%); }
+    .portfolio-colors img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+    }
+    .portfolio-item:nth-child(1) .portfolio-colors { background: linear-gradient(135deg, #777475 0%, #8B3A52 100%); }
+    .portfolio-item:nth-child(2) .portfolio-colors { background: linear-gradient(135deg, #777475 0%, #B8935A 100%); }
+    .portfolio-item:nth-child(3) .portfolio-colors { background: linear-gradient(135deg, #777475 0%, #C48098 100%); }
+    .portfolio-item:nth-child(4) .portfolio-colors { background: linear-gradient(135deg, #777475 0%, #5C2535 100%); }
+    .portfolio-item:nth-child(5) .portfolio-colors { background: linear-gradient(135deg, #777475 0%, #D4AF83 100%); }
+    .portfolio-item:nth-child(6) .portfolio-colors { background: linear-gradient(135deg, #777475 0%, #8B3A52 100%); }
 
     .portfolio-deco {
         position: absolute; inset: 0;
@@ -509,7 +516,6 @@
     /* ── CONTACT ── */
     #contact { background: var(--section-alt); }
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-    .contact-info { }
     .contact-detail { margin-bottom: 32px; }
     .contact-detail-label { font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
     .contact-detail-value { font-size: 0.9rem; color: var(--text); font-weight: 300; }
@@ -574,22 +580,73 @@
     @media (max-width: 900px) {
         .about-grid { grid-template-columns: 1fr; gap: 48px; }
         .contact-grid { grid-template-columns: 1fr; }
-        .portfolio-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 220px; }
-        .portfolio-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+        .portfolio-grid { grid-template-columns: 1fr; grid-auto-rows: 240px; gap: 16px; }
+        .portfolio-item:nth-child(1),
         .portfolio-item:nth-child(2),
         .portfolio-item:nth-child(3),
         .portfolio-item:nth-child(4),
         .portfolio-item:nth-child(5),
-        .portfolio-item:nth-child(6) { grid-column: span 1; }
+        .portfolio-item:nth-child(6) { grid-column: span 1; grid-row: span 1; }
+        .portfolio-overlay {
+            opacity: 1;
+            transform: none;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(26,13,16,0.84) 0%, rgba(26,13,16,0.22) 70%, rgba(26,13,16,0) 100%);
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+        }
+        .portfolio-arrow {
+            top: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            font-size: 1rem;
+        }
+        .portfolio-name { font-size: 1.25rem; }
+        .portfolio-tag { font-size: 0.7rem; }
         .nav-links { display: none; }
         .hamburger { display: flex; }
     }
     @media (max-width: 600px) {
-        section { padding: 80px 6%; }
-        .about-stats { grid-template-columns: 1fr 1fr; }
-        .portfolio-grid { grid-template-columns: 1fr; }
+        nav { padding: 14px 5%; }
+        nav.scrolled { padding: 12px 5%; }
+        .nav-logo {
+            font-size: 1rem;
+            letter-spacing: 0.05em;
+            max-width: 58%;
+            line-height: 1.1;
+        }
+        .theme-toggle {
+            padding: 6px 10px;
+            font-size: 0.55rem;
+            letter-spacing: 0.12em;
+        }
+        .hamburger { gap: 4px; }
+        .hamburger span { width: 20px; }
+        section { padding: 88px 7%; }
+        .section-title { font-size: clamp(1.9rem, 8vw, 2.7rem); line-height: 1.05; }
+        .section-label { letter-spacing: 0.22em; }
+        .about-stats { grid-template-columns: 1fr 1fr; gap: 12px; }
+        .portfolio-grid { grid-auto-rows: 224px; gap: 18px; width: 100%; }
         .portfolio-item:nth-child(1) { grid-column: span 1; }
+        .portfolio-colors img {
+            object-fit: cover;
+            padding: 0;
+            background: transparent;
+        }
+        .portfolio-overlay { padding: 20px 18px 18px; }
+        .portfolio-deco { font-size: 7rem; }
+        .portfolio-name { font-size: 1.02rem; }
+        .portfolio-tag { font-size: 0.66rem; }
         footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+
+    @media (hover: none), (pointer: coarse) {
+        .portfolio-item:hover .portfolio-bg,
+        .portfolio-item:hover .portfolio-overlay,
+        .portfolio-item:hover .portfolio-arrow { transform: none; }
+        .portfolio-item:hover .portfolio-bg { transform: none; }
+        .portfolio-item:hover .portfolio-overlay { opacity: 1; backdrop-filter: none; -webkit-backdrop-filter: none; }
     }
 
     /* mobile nav */
@@ -639,6 +696,7 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
     <button class="close-menu" id="closeMenu">✕</button>
+    <a href="#hero" class="mobile-link">Home</a>
     <a href="#about" class="mobile-link">About</a>
     <a href="#skills" class="mobile-link">Skills</a>
     <a href="#portfolio" class="mobile-link">Work</a>
@@ -742,7 +800,10 @@
     <div class="skills-grid">
         <div class="skill-card reveal reveal-delay-1" data-tilt>
         <div class="skill-icon">
-            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="#8B3A52" stroke-width="1.5"/><path d="M16 20 Q24 14 32 20 Q24 26 16 20Z" stroke="#D4AF83" stroke-width="1" fill="rgba(212,175,131,0.2)"/><path d="M16 28 Q24 22 32 28 Q24 34 16 28Z" stroke="#8B3A52" stroke-width="1" fill="rgba(139,58,82,0.15)"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 19V9C22 7.89543 21.1046 7 20 7H11L9 5H4C2.89543 5 2 5.89543 2 7V19C2 20.1046 2.89543 21 4 21H20C21.1046 21 22 20.1046 22 19Z" stroke="#8B3A52" stroke-width="1.5" fill="rgba(139,58,82,0.1)"/>
+                <path d="M12 11H17M12 15H15" stroke="#D4AF83" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
         </div>
         <div class="skill-name">Administrative Support</div>
         <div class="skill-desc">Handling office tasks, documentation, and coordination efficiently.</div>
@@ -751,7 +812,11 @@
         </div>
         <div class="skill-card reveal reveal-delay-2" data-tilt>
         <div class="skill-icon">
-            <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="8" width="32" height="32" rx="4" stroke="#8B3A52" stroke-width="1.5"/><path d="M18 20l-6 4 6 4M30 20l6 4-6 4" stroke="#D4AF83" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Big Bubble -->
+                <path d="M8 10H8.01M12 10H12.01M16 10H16.01" stroke="#D4AF83" stroke-width="2" stroke-linecap="round"/>
+                <path d="M21 11.5C21 15.6421 17.4183 19 13 19C11.548 19 10.1907 18.6366 9 18L4 20L5.5 15.5C4.56948 14.3312 4 12.9816 4 11.5C4 7.35786 7.58172 4 12 4C16.4183 4 21 7.35786 21 11.5Z" stroke="#8B3A52" stroke-width="1.5" fill="rgba(139,58,82,0.05)"/>
+            </svg>
         </div>
         <div class="skill-name">Customer Service</div>
         <div class="skill-desc">Assisting customers, resolving concerns, and ensuring satisfaction.</div>
@@ -760,7 +825,17 @@
         </div>
         <div class="skill-card reveal reveal-delay-3" data-tilt>
         <div class="skill-icon">
-            <svg viewBox="0 0 48 48" fill="none"><path d="M24 8 L40 18 L40 30 L24 40 L8 30 L8 18 Z" stroke="#8B3A52" stroke-width="1.5" fill="none"/><circle cx="24" cy="24" r="6" stroke="#D4AF83" stroke-width="1.5"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Clipboard/Paper -->
+            <rect x="5" y="4" width="14" height="17" rx="2" stroke="#8B3A52" stroke-width="1.5" fill="rgba(139,58,82,0.05)"/>
+            <!-- Top Clip -->
+            <path d="M9 3H15V5H9V3Z" fill="#D4AF83"/>
+            <!-- List Lines -->
+            <path d="M9 10H15M9 14H13M9 18H11" stroke="#D4AF83" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- Check marks (dots) -->
+            <circle cx="7" cy="10" r="0.5" fill="#8B3A52"/>
+            <circle cx="7" cy="14" r="0.5" fill="#8B3A52"/>
+            </svg>
         </div>
         <div class="skill-name">Inventory Management</div>
         <div class="skill-desc">Monitoring stock levels and maintaining accurate records.</div>
@@ -769,7 +844,15 @@
         </div>
         <div class="skill-card reveal reveal-delay-2" data-tilt>
         <div class="skill-icon">
-            <svg viewBox="0 0 48 48" fill="none"><path d="M10 38 Q18 18 24 14 Q30 18 38 38" stroke="#8B3A52" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="24" cy="14" r="4" stroke="#D4AF83" stroke-width="1.5"/><path d="M14 30 Q24 22 34 30" stroke="#D4AF83" stroke-width="1" fill="none"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Window Outline -->
+            <rect x="3" y="4" width="18" height="16" rx="2" stroke="#8B3A52" stroke-width="1.5"/>
+            <!-- Tool Header -->
+            <path d="M3 8H21" stroke="#8B3A52" stroke-width="1.5"/>
+            <!-- "W" or "X" placeholder symbols -->
+            <path d="M7 12L9 16L11 12" stroke="#D4AF83" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14 12L17 16M17 12L14 16" stroke="#D4AF83" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
         </div>
         <div class="skill-name">Microsoft Office</div>
         <div class="skill-desc">Proficient in Word, Excel, and other office tools.</div>
@@ -786,8 +869,10 @@
     <div class="portfolio-grid">
         <div class="portfolio-item reveal">
         <div class="portfolio-bg"></div>
-        <div class="portfolio-colors"></div>
-        <div class="portfolio-deco">I</div>
+        <div class="portfolio-colors"> <img src="asset/image/felco.png" alt=""></div>
+        <div class="portfolio-deco">
+           
+        </div>
         <div class="portfolio-overlay">
             <div class="portfolio-name">Firefly Electric and Lighting Corporation</div>
             <div class="portfolio-tag">Branch Assistant · May 2025 - Oct 2025</div>
@@ -796,8 +881,8 @@
         </div>
         <div class="portfolio-item reveal reveal-delay-1">
         <div class="portfolio-bg"></div>
-        <div class="portfolio-colors"></div>
-        <div class="portfolio-deco">II</div>
+        <div class="portfolio-colors"> <img src="asset/image/landers.jpg" alt=""></div>
+        <div class="portfolio-deco"></div>
         <div class="portfolio-overlay">
             <div class="portfolio-name">Landers Superstore</div>
             <div class="portfolio-tag">Cashier · Nov 2024 - Dec 2024</div>
@@ -806,8 +891,8 @@
         </div>
         <div class="portfolio-item reveal reveal-delay-2">
         <div class="portfolio-bg"></div>
-        <div class="portfolio-colors"></div>
-        <div class="portfolio-deco">III</div>
+        <div class="portfolio-colors"> <img src="asset/image/wolf.png" alt=""></div>
+        <div class="portfolio-deco"></div>
         <div class="portfolio-overlay">
             <div class="portfolio-name">Big Bad Wolf</div>
             <div class="portfolio-tag">Part-Time Cashier · Sept 2024</div>
@@ -975,14 +1060,16 @@
     });
 
     // ── HAMBURGER
-    document.getElementById('hamburger').addEventListener('click', () => {
-    document.getElementById('mobileMenu').classList.add('open');
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
     });
     document.getElementById('closeMenu').addEventListener('click', () => {
-    document.getElementById('mobileMenu').classList.remove('open');
+    mobileMenu.classList.remove('open');
     });
     document.querySelectorAll('.mobile-link').forEach(l => {
-    l.addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
+    l.addEventListener('click', () => mobileMenu.classList.remove('open'));
     });
 
     // ── SCROLL REVEAL
