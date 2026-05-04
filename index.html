@@ -296,7 +296,17 @@
         display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: center;
     }
     .about-image-wrap {
-        position: relative;
+        height: 500px; /* pwede mo adjust */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #d7d1d1; /* optional */
+    }
+
+    .about-img {
+        max-height: 100%;
+        width: auto;
+        object-fit: contain;
     }
     .about-image-frame {
         position: relative;
@@ -684,11 +694,7 @@
     <div class="about-grid">
         <div class="reveal">
         <div class="about-image-wrap">
-            <div class="about-image-frame">
-            <div class="about-placeholder">S</div>
-            </div>
-            <div class="about-deco"></div>
-            <div class="about-deco-2"></div>
+            <img src="asset/image/jaya.png" alt="Christine Joy D. Molabola" style="width:100%; height:100%; object-fit:cover;">
         </div>
         </div>
         <div class="about-text">
@@ -732,7 +738,7 @@
         <circle cx="100" cy="20" r="4" fill="#D4AF83"/>
     </svg>
     <p class="section-label reveal">My Expertise</p>
-    <h2 class="section-title reveal reveal-delay-1">Skills & <em>Craft</em></h2>
+    <h2 class="section-title reveal reveal-delay-1">Skills</h2>
     <div class="skills-grid">
         <div class="skill-card reveal reveal-delay-1" data-tilt>
         <div class="skill-icon">
